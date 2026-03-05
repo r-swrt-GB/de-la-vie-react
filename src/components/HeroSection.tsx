@@ -5,16 +5,29 @@ interface HeroSectionProps {
   title: string;
   subtitle?: string;
   showCta?: boolean;
+  imageWidth: number;
+  imageHeight: number;
 }
 
-const HeroSection = ({ image, title, subtitle, showCta = false }: HeroSectionProps) => {
+const HeroSection = ({
+  image,
+  title,
+  subtitle,
+  showCta = false,
+  imageWidth,
+  imageHeight,
+}: HeroSectionProps) => {
   return (
     <section className="relative min-h-[70vh] md:min-h-[85vh] flex items-center justify-center overflow-hidden">
       <img
         src={image}
         alt={title}
+        width={imageWidth}
+        height={imageHeight}
         className="absolute inset-0 w-full h-full object-cover"
         loading="eager"
+        decoding="async"
+        fetchPriority="high"
       />
       <div className="absolute inset-0 bg-forest/60" />
 

@@ -1,13 +1,32 @@
 import Layout from "@/components/Layout";
 import HeroSection from "@/components/HeroSection";
 import SectionWrapper from "@/components/SectionWrapper";
+import SEO from "@/components/SEO";
 import oakForest from "@/assets/oak-tree-forest.jpg";
 import farmHero from "@/assets/farm-hero.jpg";
+import { getBreadcrumbJsonLd, routeSeo } from "@/seo/routeSeo";
 
 const About = () => {
+  const seo = routeSeo["/about"];
+
   return (
     <Layout>
-      <HeroSection image={oakForest} title="Our Story" subtitle="Where passion meets the earth." />
+      <SEO
+        pathname={seo.pathname}
+        title={seo.title}
+        description={seo.description}
+        jsonLd={getBreadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ])}
+      />
+      <HeroSection
+        image={oakForest}
+        title="Our Story"
+        subtitle="Where passion meets the earth."
+        imageWidth={1920}
+        imageHeight={1088}
+      />
 
       <SectionWrapper>
         <div className="max-w-3xl mx-auto">
@@ -42,8 +61,11 @@ const About = () => {
             <img
               src={farmHero}
               alt="De La Vie farm landscape"
+              width={1920}
+              height={1088}
               className="w-full h-64 md:h-80 object-cover rounded-lg"
               loading="lazy"
+              decoding="async"
             />
           </div>
           <div>

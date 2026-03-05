@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">De La Vie Truffles</title>
+  <desc id="desc">South African Bianchetto white truffle farm</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#234332"/>
+      <stop offset="100%" stop-color="#2f5e44"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g fill="#f4efe3" font-family="Playfair Display, Georgia, serif">
+    <text x="88" y="280" font-size="84" font-weight="700">De La Vie Truffles</text>
+    <text x="88" y="350" font-size="40" font-family="Inter, Arial, sans-serif">South African Bianchetto white truffles</text>
+  </g>
+</svg>

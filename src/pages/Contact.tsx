@@ -1,6 +1,8 @@
 import Layout from "@/components/Layout";
 import SectionWrapper from "@/components/SectionWrapper";
+import SEO from "@/components/SEO";
 import { Phone, Mail, MessageCircle, Facebook } from "lucide-react";
+import { getBreadcrumbJsonLd, routeSeo } from "@/seo/routeSeo";
 
 const contactActions = [
   {
@@ -34,8 +36,19 @@ const contactActions = [
 ];
 
 const Contact = () => {
+  const seo = routeSeo["/contact"];
+
   return (
     <Layout>
+      <SEO
+        pathname={seo.pathname}
+        title={seo.title}
+        description={seo.description}
+        jsonLd={getBreadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ])}
+      />
       <div className="bg-forest py-20 md:py-28">
         <div className="container text-center animate-fade-in">
           <h1 className="font-heading text-4xl md:text-5xl font-bold text-cream-light mb-4">

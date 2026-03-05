@@ -1,7 +1,9 @@
 import Layout from "@/components/Layout";
 import HeroSection from "@/components/HeroSection";
 import SectionWrapper from "@/components/SectionWrapper";
+import SEO from "@/components/SEO";
 import truffleProducts from "@/assets/truffle-products.jpg";
+import { getBreadcrumbJsonLd, routeSeo } from "@/seo/routeSeo";
 
 const products = [
   {
@@ -25,12 +27,25 @@ const products = [
 ];
 
 const Products = () => {
+  const seo = routeSeo["/products"];
+
   return (
     <Layout>
+      <SEO
+        pathname={seo.pathname}
+        title={seo.title}
+        description={seo.description}
+        jsonLd={getBreadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Products", path: "/products" },
+        ])}
+      />
       <HeroSection
         image={truffleProducts}
         title="Our Products"
         subtitle="From earth to table — nature's finest."
+        imageWidth={1920}
+        imageHeight={1080}
       />
 
       <SectionWrapper>

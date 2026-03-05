@@ -1,7 +1,9 @@
 import Layout from "@/components/Layout";
 import HeroSection from "@/components/HeroSection";
 import SectionWrapper from "@/components/SectionWrapper";
+import SEO from "@/components/SEO";
 import truffleCloseup from "@/assets/truffle-closeup.jpg";
+import { getBreadcrumbJsonLd, routeSeo } from "@/seo/routeSeo";
 
 const truffleFacts = [
   {
@@ -23,12 +25,25 @@ const truffleFacts = [
 ];
 
 const Truffles = () => {
+  const seo = routeSeo["/truffles"];
+
   return (
     <Layout>
+      <SEO
+        pathname={seo.pathname}
+        title={seo.title}
+        description={seo.description}
+        jsonLd={getBreadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Truffles", path: "/truffles" },
+        ])}
+      />
       <HeroSection
         image={truffleCloseup}
         title="Bianchetto White Truffles"
         subtitle="The world's most treasured culinary ingredient."
+        imageWidth={1024}
+        imageHeight={1024}
       />
 
       {truffleFacts.map((fact, index) => (

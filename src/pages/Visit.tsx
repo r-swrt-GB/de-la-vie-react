@@ -1,18 +1,32 @@
 import Layout from "@/components/Layout";
 import HeroSection from "@/components/HeroSection";
 import SectionWrapper from "@/components/SectionWrapper";
+import SEO from "@/components/SEO";
 import { MapPin, Navigation } from "lucide-react";
 import visitFarm from "@/assets/visit-farm.jpg";
+import { getBreadcrumbJsonLd, routeSeo } from "@/seo/routeSeo";
 
 const Visit = () => {
   const googleMapsUrl = "https://maps.google.com/?q=De+La+Vie+Truffles+South+Africa";
+  const seo = routeSeo["/visit"];
 
   return (
     <Layout>
+      <SEO
+        pathname={seo.pathname}
+        title={seo.title}
+        description={seo.description}
+        jsonLd={getBreadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Visit", path: "/visit" },
+        ])}
+      />
       <HeroSection
         image={visitFarm}
         title="Visit Us"
         subtitle="Experience the farm first-hand."
+        imageWidth={1920}
+        imageHeight={1088}
       />
 
       <SectionWrapper>
