@@ -48,14 +48,14 @@ const HeroSection = ({
         {showCta && (
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="#visit"
+              href="#products"
               onClick={(event) => {
                 event.preventDefault();
-                scrollToSection("visit");
+                scrollToSection("products");
               }}
               className="inline-block px-8 py-4 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-all text-base"
             >
-              Visit the Farm
+              View Products
             </a>
             <a
               href="#contact"

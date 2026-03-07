@@ -12,14 +12,6 @@ if (!existsSync(indexPath)) {
 
 const routes = [
   {
-    path: "/about",
-    title: "About De La Vie Truffles | Our Farm Story",
-    description:
-      "Learn how De La Vie Truffles has cultivated Bianchetto white truffles in South Africa since 2019 using sustainable farming practices.",
-    heading: "About De La Vie Truffles",
-    intro: "Discover our farm story and sustainable truffle cultivation in South Africa.",
-  },
-  {
     path: "/truffles",
     title: "Bianchetto White Truffles | De La Vie Truffles",
     description:

@@ -3,10 +3,7 @@ import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const navLinks = [
-  { to: "about", label: "About" },
-  { to: "truffles", label: "Truffles" },
   { to: "products", label: "Products" },
-  { to: "visit", label: "Find Us" },
   { to: "contact", label: "Contact" },
 ];
 
