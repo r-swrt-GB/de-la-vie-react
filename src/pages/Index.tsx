@@ -15,22 +15,10 @@ import {
 } from "@/seo/structuredData";
 
 const truffleFacts = [
-  {
-    title: "What Are Truffles?",
-    text: "Truffles are a type of underground fungus that grows in symbiosis with the roots of certain inoculated host trees. Unlike mushrooms, truffles grow entirely below the soil surface, making them notoriously difficult to find — traditionally requiring trained dogs to locate them by scent. At De La Vie, we cultivate the Bianchetto white truffle (Tuber borchii), a highly prized variety known for its delicate, garlicky aroma and earthy flavour.",
-  },
-  {
-    title: "How Do They Grow?",
-    text: "Truffles form through a delicate mycorrhizal relationship with inoculated host trees. The tree provides sugars to the truffle, while the truffle enhances the tree's ability to absorb water and nutrients. At De La Vie, we use Populus simonii and stone pine trees, each carefully inoculated with Bianchetto truffle spores. This symbiosis requires specific soil conditions and patience — it takes several years from planting before the first truffles appear.",
-  },
-  {
-    title: "Why Bianchetto?",
-    text: "The Bianchetto white truffle (Tuber borchii) is one of the most sought-after truffle varieties in the world. While smaller than its famous cousin the Alba white truffle, the Bianchetto offers a remarkable depth of flavour — earthy, garlicky, and subtly sweet. It is adaptable to different climates and soils, making it ideal for cultivation in South Africa.",
-  },
-  {
-    title: "Why South Africa?",
-    text: "South Africa's diverse climate zones include regions with conditions perfectly suited to truffle cultivation — cool winters, moderate rainfall, and suitable soils. The Southern Hemisphere's opposite seasons also mean South African truffles mature during the Northern Hemisphere's off-season, creating unique market opportunities. De La Vie has been proving this since 2019.",
-  },
+  // {
+  //   title: "What Are Truffles?",
+  //   text: "Truffles are a type of underground fungus that grows in symbiosis with the roots of certain inoculated host trees. Unlike mushrooms, truffles grow entirely below the soil surface, making them notoriously difficult to find — traditionally requiring trained dogs to locate them by scent. At De La Vie, we cultivate the Bianchetto white truffle (Tuber borchii), a highly prized variety known for its delicate, garlicky aroma and earthy flavour.",
+  // },
 ];
 
 const products = [
@@ -111,13 +99,46 @@ const Index = () => {
               South Africa, our farm is a pioneering venture cultivating Bianchetto white truffles
               (Tuber borchii).
             </p>
-            <p>
-              Today, our carefully planted orchards of inoculated Populus simonii and stone pine
-              form the foundation of a sustainable truffle farm. Every tree is inoculated with
-              Bianchetto truffle spores and tended with care. We practice organic, low-impact
-              farming that works in harmony with the natural ecosystem — no shortcuts, no compromises.
+          </div>
+        </div>
+      </SectionWrapper>
+
+      {/* Truffles */}
+      <SectionWrapper id="truffles">
+        <div className="grid md:grid-cols-2 gap-10 items-center mb-16">
+          <div className="overflow-hidden rounded-lg">
+            <img
+              src={truffleCloseup}
+              alt="Fresh Bianchetto white truffle"
+              width={1024}
+              height={1024}
+              className="w-full h-64 md:h-80 object-cover hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div>
+            <h2 className="font-heading text-3xl md:text-4xl font-semibold text-primary mb-4">
+              Bianchetto White Truffles
+            </h2>
+            <p className="text-muted-foreground leading-relaxed text-lg">
+              Truffles are among the world's most prized culinary ingredients, rare underground fungi
+              that grow symbiotically with the roots of inoculated host trees. Our Bianchetto white truffles
+              thrive alongside inoculated Populus simonii and stone pine, a product of patience, perfect soil
+              conditions, and nature's own timing.
             </p>
           </div>
+        </div>
+
+        <div className="max-w-3xl mx-auto space-y-12">
+          {truffleFacts.map((fact, index) => (
+            <div key={fact.title} className={index % 2 !== 0 ? "bg-card rounded-lg p-8 border border-border" : ""}>
+              <h3 className="font-heading text-2xl font-semibold text-primary mb-3">
+                {fact.title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed text-lg">{fact.text}</p>
+            </div>
+          ))}
         </div>
       </SectionWrapper>
 
@@ -128,7 +149,6 @@ const Index = () => {
             Our Products
           </h2>
           <p className="text-center text-muted-foreground mb-12 flex items-center justify-center gap-2">
-            <Truck size={18} className="text-primary" />
             We offer courier services — fresh truffles delivered to your door.
           </p>
 
@@ -182,45 +202,6 @@ const Index = () => {
         </div>
       </SectionWrapper>
 
-      {/* Truffles */}
-      <SectionWrapper id="truffles">
-        <div className="grid md:grid-cols-2 gap-10 items-center mb-16">
-          <div className="overflow-hidden rounded-lg">
-            <img
-              src={truffleCloseup}
-              alt="Fresh Bianchetto white truffle"
-              width={1024}
-              height={1024}
-              className="w-full h-64 md:h-80 object-cover hover:scale-105 transition-transform duration-500"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-          <div>
-            <h2 className="font-heading text-3xl md:text-4xl font-semibold text-primary mb-4">
-              Bianchetto White Truffles
-            </h2>
-            <p className="text-muted-foreground leading-relaxed text-lg">
-              Truffles are among the world's most prized culinary ingredients — rare underground fungi
-              that grow symbiotically with the roots of inoculated host trees. Our Bianchetto white truffles
-              thrive alongside inoculated Populus simonii and stone pine, a product of patience, perfect soil
-              conditions, and nature's own timing.
-            </p>
-          </div>
-        </div>
-
-        <div className="max-w-3xl mx-auto space-y-12">
-          {truffleFacts.map((fact, index) => (
-            <div key={fact.title} className={index % 2 !== 0 ? "bg-card rounded-lg p-8 border border-border" : ""}>
-              <h3 className="font-heading text-2xl font-semibold text-primary mb-3">
-                {fact.title}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed text-lg">{fact.text}</p>
-            </div>
-          ))}
-        </div>
-      </SectionWrapper>
-
       {/* Contact */}
       <SectionWrapper id="contact" alternate>
         <div className="max-w-2xl mx-auto">
@@ -267,10 +248,6 @@ const Index = () => {
           </h2>
           <p className="text-muted-foreground text-lg mb-4">
             Located in the heart of South Africa.
-          </p>
-          <p className="text-muted-foreground mb-8 flex items-center justify-center gap-2">
-            <Truck size={18} className="text-primary" />
-            We offer courier services — fresh truffles and truffle butter delivered to your door.
           </p>
           <a
             href="https://maps.google.com/?q=De+La+Vie+Truffles+South+Africa"
