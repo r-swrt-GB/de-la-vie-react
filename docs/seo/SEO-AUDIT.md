@@ -1,56 +1,45 @@
 # SEO Audit (Fresh Scan)
 
-## Project Type Identified
-- Runtime/framework: Vite + React 18 + TypeScript
-- Routing: `react-router-dom` (`BrowserRouter` with static routes)
-- Rendering model: Client-side rendered SPA (no SSR server runtime)
+## Stack Detected
+- Build/runtime: Vite + React + TypeScript
+- Rendering model: SPA client render
+- Routing model: Single-page with in-page section anchors (no active route-level pages)
 
-## Findings Before Changes
-- Metadata was mostly static in `index.html` only.
-- No reusable per-route SEO system.
-- No canonical URL management per route.
-- No route-specific robots handling for 404.
-- No structured data JSON-LD implementation.
-- `robots.txt` existed but had no sitemap reference.
+## Findings Before Re-Implementation
+- No reusable typed SEO component.
+- No JSON-LD structured data system.
+- Robots file existed but no sitemap reference.
 - No sitemap generation workflow.
-- Internal links included plain `<a href>` for internal routes in places.
-- Route components were eagerly loaded (no route-level code splitting).
-- Image dimensions were not declared on several images (CLS risk).
-- Google Fonts loaded via CSS `@import` (less optimal than head preconnect + stylesheet).
+- Index shell metadata was static and limited.
+- Google font loading was CSS `@import` (less optimal than preconnect + stylesheet link).
+- Hero/product images lacked explicit width/height on several elements (CLS risk).
+- Navigation used JS buttons only (reduced crawl discoverability for internal section links).
 
 ## Changes Implemented
 - Added typed reusable SEO component:
   - `src/components/SEO.tsx`
-  - supports title, description, canonical, robots, OG, Twitter, optional JSON-LD.
-- Added central site/route SEO config:
+- Added centralized SEO config and structured data:
   - `src/seo/siteConfig.ts`
-  - `src/seo/routeSeo.ts`
-- Wired unique SEO metadata on all main routes:
-  - `/`, `/about`, `/truffles`, `/products`, `/visit`, `/contact`, and `404` (`noindex, nofollow`).
-- Added structured data:
-  - `Organization` + `WebSite` on home.
-  - `BreadcrumbList` on all main routes.
-- Improved crawlability/indexability artifacts:
-  - Updated `public/robots.txt` with sitemap pointer.
-  - Added `scripts/generate-sitemap.mjs` and generated `public/sitemap.xml`.
-- Added SPA prerender-lite output step:
-  - `scripts/prerender-static-routes.mjs`
-  - generates static route HTML in `dist/<route>/index.html` after build with route-specific metadata and fallback HTML content.
-- Enforced canonical strategy (no trailing slash except root) through SEO helpers.
-- Improved performance/accessibility signals:
-  - Route-level code splitting via `React.lazy` + `Suspense` in `src/App.tsx`.
-  - Added `width`/`height` + `decoding` on key images.
-  - Kept hero image as LCP candidate with `fetchPriority="high"`.
-  - Replaced internal `<a href>` with `<Link>` where needed.
-  - Added skip link and explicit `header/nav/main/footer` landmarks.
-  - Moved Google Fonts from CSS `@import` to head preconnect + stylesheet link.
-- Added default social image:
-  - `public/og-default.svg`
-- Cleaned base HTML metadata defaults:
-  - `index.html`
+  - `src/seo/structuredData.ts`
+- Applied SEO component on main page with:
+  - title, description, canonical, robots
+  - Open Graph + Twitter tags
+  - JSON-LD: `WebSite`, `Organization`, `LocalBusiness`, `BreadcrumbList`
+- Improved crawl/index signals:
+  - Updated `public/robots.txt` with sitemap declaration
+  - Added `public/sitemap.xml`
+  - Added build-time sitemap script: `scripts/generate-sitemap.mjs`
+  - Added scripts in `package.json`: `seo:sitemap`, `prebuild`
+- Improved technical SEO/CWV/a11y:
+  - Added image `width`/`height` and `decoding="async"` on key images
+  - Added `fetchPriority="high"` for hero image
+  - Converted navigation/button links to anchor links for section discoverability
+  - Added skip link + explicit `header` and `main` landmarks
+  - Moved Google Fonts loading from CSS `@import` to head `preconnect` + stylesheet
+  - Added default social share image: `public/og-default.svg`
+  - Added meaningful non-JS fallback HTML in `index.html`
 
 ## Remaining Recommendations
-- If deployment target supports SSR/SSG natively, migrate to framework-level SSR/SSG for stronger first-byte SEO guarantees.
-- Replace default `VITE_SITE_URL`/hardcoded domain if production canonical domain differs.
-- Consider converting large JPG assets to WebP/AVIF and serving responsive variants for better LCP.
-- Add automated Lighthouse CI in CI/CD for regression detection.
+- If you re-introduce multi-route pages, extend sitemap + metadata per route.
+- Consider WebP/AVIF variants for hero and product images.
+- Add Lighthouse CI for continuous SEO/performance regression checks.

@@ -6,7 +6,7 @@ type JsonLd = Record<string, unknown>;
 interface SEOProps {
   title: string;
   description: string;
-  pathname: string;
+  pathname?: string;
   image?: string;
   type?: "website" | "article";
   robots?: string;
@@ -59,7 +59,7 @@ const appendJsonLd = (payload: JsonLd | JsonLd[]) => {
 const SEO = ({
   title,
   description,
-  pathname,
+  pathname = "/",
   image = siteConfig.defaultOgImagePath,
   type = "website",
   robots = "index, follow",

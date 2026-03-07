@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 interface HeroSectionProps {
   image: string;
   title: string;
@@ -8,6 +6,13 @@ interface HeroSectionProps {
   imageWidth: number;
   imageHeight: number;
 }
+
+const scrollToSection = (id: string) => {
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+};
 
 const HeroSection = ({
   image,
@@ -42,18 +47,26 @@ const HeroSection = ({
         )}
         {showCta && (
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/visit"
+            <a
+              href="#visit"
+              onClick={(event) => {
+                event.preventDefault();
+                scrollToSection("visit");
+              }}
               className="inline-block px-8 py-4 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-all text-base"
             >
               Visit the Farm
-            </Link>
-            <Link
-              to="/contact"
+            </a>
+            <a
+              href="#contact"
+              onClick={(event) => {
+                event.preventDefault();
+                scrollToSection("contact");
+              }}
               className="inline-block px-8 py-4 border-2 border-cream-light text-cream-light font-medium rounded-lg hover:bg-cream-light/10 transition-all text-base"
             >
               Contact Us
-            </Link>
+            </a>
           </div>
         )}
       </div>

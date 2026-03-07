@@ -8,7 +8,6 @@
     "seo:sitemap": "node scripts/generate-sitemap.mjs",
     "prebuild": "npm run seo:sitemap",
     "build": "vite build",
-    "postbuild": "node scripts/prerender-static-routes.mjs",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",

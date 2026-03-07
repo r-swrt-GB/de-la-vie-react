@@ -2,9 +2,8 @@ export const DEFAULT_SITE_URL = "https://delavietruffles.co.za";
 
 export const siteConfig = {
   name: "De La Vie Truffles",
-  shortName: "De La Vie",
   description:
-    "Bianchetto white truffles cultivated in South Africa. Explore our farm story, products, and visitor experiences.",
+    "Premium Bianchetto white truffles grown in South Africa. Discover our farm story, products, and contact details.",
   siteUrl: (import.meta.env.VITE_SITE_URL as string | undefined)?.replace(/\/$/, "") ||
     DEFAULT_SITE_URL,
   locale: "en_ZA",
@@ -12,7 +11,7 @@ export const siteConfig = {
   defaultOgImagePath: "/og-default.svg",
 } as const;
 
-export const getCanonicalUrl = (path: string): string => {
+export const getCanonicalUrl = (path = "/"): string => {
   const normalizedPath = path === "/" ? "/" : path.replace(/\/$/, "");
   return `${siteConfig.siteUrl}${normalizedPath}`;
 };

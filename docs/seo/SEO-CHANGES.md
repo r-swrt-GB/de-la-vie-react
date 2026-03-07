@@ -1,63 +1,50 @@
-# SEO Changes Verification
+# SEO Verification Steps
 
-## 1) Install + Run
+## 1) Install and Run Locally
 ```sh
 npm install
 npm run dev
 ```
-- Open `http://localhost:8080`.
-- Navigate each route: `/`, `/about`, `/truffles`, `/products`, `/visit`, `/contact`.
+Open `http://localhost:8080`.
 
-## 2) Validate Route Metadata
-For each route, inspect document head in browser devtools:
-- `<title>` is unique and route-specific.
-- `<meta name="description">` is unique.
-- `<link rel="canonical">` matches route URL and has no trailing slash (except `/`).
-- OG/Twitter tags (`og:title`, `og:description`, `og:url`, `og:image`, `twitter:*`) are present.
+## 2) Validate Metadata
+In browser devtools on the home page, confirm:
+- `<title>` is `De La Vie Truffles | South African Bianchetto White Truffles`
+- `<meta name="description">` is present
+- `<link rel="canonical" href="https://delavietruffles.co.za/">`
+- OG and Twitter tags are present (`og:*`, `twitter:*`)
 
-## 3) Validate JSON-LD
-In devtools console on each route:
+## 3) Validate Structured Data (JSON-LD)
+Run in console:
 ```js
 [...document.querySelectorAll('script[type="application/ld+json"]')].map(s => JSON.parse(s.textContent))
 ```
+Expected types:
+- `WebSite`
+- `Organization`
+- `LocalBusiness`
+- `BreadcrumbList`
+
+## 4) Validate Crawl Files
+- Open `/robots.txt` and confirm sitemap line exists.
+- Open `/sitemap.xml` and confirm home URL is listed.
+
+## 5) Validate Build
+```sh
+npm run build
+```
 Expected:
-- Home includes `WebSite` and `Organization`.
-- Main routes include a `BreadcrumbList`.
+- `prebuild` runs sitemap generation (`npm run seo:sitemap`)
+- Vite build succeeds
 
-## 4) Validate robots + sitemap
-- Open `http://localhost:8080/robots.txt` and confirm sitemap reference exists.
-- Open `http://localhost:8080/sitemap.xml` and confirm all key routes are listed.
+## 6) Lighthouse Quick Check
+Run Lighthouse in Chrome DevTools on home page and verify:
+- SEO score high (titles/meta/canonical/structured data)
+- Accessibility has landmarks and heading structure
+- Performance improved by stable image dimensions and non-blocking font loading
 
-## 5) Validate Build + Prerender Output
+## 7) Production Domain Override
+If canonical domain differs, build with:
 ```sh
-npm run build
+VITE_SITE_URL=https://your-domain.tld npm run build
 ```
-Then check generated files:
-- `dist/index.html`
-- `dist/about/index.html`
-- `dist/truffles/index.html`
-- `dist/products/index.html`
-- `dist/visit/index.html`
-- `dist/contact/index.html`
-
-Confirm each route HTML file has route-specific title, description, canonical, OG/Twitter values, and fallback HTML content inside `#root`.
-
-## 6) Lighthouse / CWV Spot Check
-Run Lighthouse (Chrome DevTools) on home page and verify:
-- SEO: high score expected (metadata, crawlability, structured data).
-- Accessibility: no missing landmark issues.
-- Performance:
-  - Route chunks are split.
-  - Hero image has stable dimensions + high fetch priority.
-  - Non-critical images lazy load.
-
-## 7) Domain Configuration
-If production domain is not `https://delavietruffles.co.za`, set:
-```sh
-VITE_SITE_URL=https://your-production-domain.tld
-```
-Then rebuild:
-```sh
-npm run build
-```
-This keeps canonical URLs and sitemap aligned with production.
