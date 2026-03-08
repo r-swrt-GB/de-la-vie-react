@@ -13,17 +13,17 @@ if (!existsSync(indexPath)) {
 const routes = [
   {
     path: "/truffles",
-    title: "Bianchetto White Truffles | De La Vie Truffles",
+    title: "Tuber borchii Truffles | De La Vie Truffles",
     description:
-      "Understand what Bianchetto white truffles are, how they grow, and why South Africa is ideal for truffle cultivation.",
-    heading: "Bianchetto White Truffles",
-    intro: "Learn what makes Bianchetto truffles a prized culinary ingredient.",
+      "Understand what Tuber borchii truffles are, how they grow, and why South Africa is ideal for truffle cultivation.",
+    heading: "Tuber borchii Truffles",
+    intro: "Learn what makes Tuber borchii truffles a prized culinary ingredient.",
   },
   {
     path: "/products",
     title: "Truffle Products | Fresh Truffles, Oils, and Experiences",
     description:
-      "Explore seasonal fresh Bianchetto truffles, upcoming truffle oil, and guided farm experiences from De La Vie Truffles.",
+      "Explore seasonal fresh Tuber borchii truffles, upcoming truffle oil, and guided farm experiences from De La Vie Truffles.",
     heading: "Our Products",
     intro: "Browse seasonal truffle products and farm experiences.",
   },

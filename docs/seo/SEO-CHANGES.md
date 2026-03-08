@@ -9,7 +9,7 @@ Open `http://localhost:8080`.
 
 ## 2) Validate Metadata
 In browser devtools on the home page, confirm:
-- `<title>` is `De La Vie Truffles | South African Bianchetto White Truffles`
+- `<title>` is `De La Vie Truffles | South African Tuber borchii Truffles`
 - `<meta name="description">` is present
 - `<link rel="canonical" href="https://delavietruffles.co.za/">`
 - OG and Twitter tags are present (`og:*`, `twitter:*`)

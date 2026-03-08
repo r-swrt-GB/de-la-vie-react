@@ -16,20 +16,20 @@ import {
 const truffleFacts = [
   // {
   //   title: "What Are Truffles?",
-  //   text: "Truffles are a type of underground fungus that grows in symbiosis with the roots of certain inoculated host trees. Unlike mushrooms, truffles grow entirely below the soil surface, making them notoriously difficult to find — traditionally requiring trained dogs to locate them by scent. At De La Vie, we cultivate the Bianchetto white truffle (Tuber borchii), a highly prized variety known for its delicate, garlicky aroma and earthy flavour.",
+  //   text: "Truffles are a type of underground fungus that grows in symbiosis with the roots of certain inoculated host trees. Unlike mushrooms, truffles grow entirely below the soil surface, making them notoriously difficult to find — traditionally requiring trained dogs to locate them by scent. At De La Vie, we cultivate the Tuber borchii truffle, a highly prized variety known for its delicate, garlicky aroma and earthy flavour.",
   // },
 ];
 
 const products = [
   {
-    name: "Fresh Bianchetto White Truffles",
+    name: "Fresh Tuber borchii Truffles",
     description:
-      "Freshly harvested Bianchetto white truffles (Tuber borchii), available seasonally during the South African winter months (June to August).",
+      "Freshly harvested Tuber borchii truffles, available seasonally during the South African winter months (June to August).",
   },
   {
     name: "Fresh Truffle Butter",
     description:
-      "Handcrafted truffle butter made with our own farm-fresh Bianchetto white truffles and premium locally sourced butter.",
+      "Handcrafted truffle butter made with our own farm-fresh Tuber borchii truffles and premium locally sourced butter.",
   },
 ];
 
@@ -75,8 +75,8 @@ const Index = () => {
   return (
     <Layout>
       <SEO
-        title="De La Vie Truffles | South African Bianchetto White Truffles"
-        description="Premium Bianchetto white truffles grown in South Africa. Explore our story, products, and contact options."
+        title="De La Vie Truffles | South African Tuber borchii Truffles"
+        description="Premium Tuber borchii truffles grown in South Africa. Explore our story, products, and contact options."
         pathname="/"
         jsonLd={[websiteJsonLd, organizationJsonLd, breadcrumbJsonLd]}
       />
@@ -105,7 +105,7 @@ const Index = () => {
             <div className="overflow-hidden rounded-lg">
               <img
                 src={productTruffles}
-                alt="Fresh Bianchetto white truffles"
+                alt="Fresh Tuber borchii truffles"
                 width={800}
                 height={800}
                 className="w-full h-64 md:h-80 object-cover rounded-lg hover:scale-105 transition-transform duration-500"
