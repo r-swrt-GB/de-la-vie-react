@@ -2,10 +2,8 @@ import HeroSection from "@/components/HeroSection";
 import SectionWrapper from "@/components/SectionWrapper";
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
-import farmHero from "@/assets/farm-hero.jpg";
+import farmHero from "@/assets/farm-hero.jpeg";
 import truffleCloseup from "@/assets/truffle-closeup.jpg";
-import productTruffles from "@/assets/product-truffles.jpg";
-import productButter from "@/assets/product-butter.jpg";
 import { Phone, Mail, MessageCircle, Facebook } from "lucide-react";
 import {
   breadcrumbJsonLd,
@@ -21,6 +19,11 @@ const truffleFacts = [
 ];
 
 const products = [
+  {
+    name: "Inoculated Trees",
+    description:
+      "Healthy host trees inoculated for truffle cultivation, ideal for starting or expanding your own truffle orchard.",
+  },
   {
     name: "Fresh Tuber borchii Truffles",
     description:
@@ -100,64 +103,22 @@ const Index = () => {
             We offer courier services — fresh truffles delivered to your door.
           </p>
 
-          {/* Fresh Truffles — image left */}
-          <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
-            <div className="overflow-hidden rounded-lg">
-              <img
-                src={productTruffles}
-                alt="Fresh Tuber borchii truffles"
-                width={800}
-                height={800}
-                className="w-full h-64 md:h-80 object-cover rounded-lg hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <div className="bg-card rounded-lg p-8 border border-border">
-              <h3 className="font-heading text-2xl font-semibold text-primary mb-3">
-                {products[0].name}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed mb-4">{products[0].description}</p>
-              <a
-                href={buildProductWhatsappLink(products[0].name)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-md font-medium hover:opacity-90 transition-opacity"
-              >
-                <MessageCircle size={18} />
-                Order on WhatsApp
-              </a>
-            </div>
-          </div>
-
-          {/* Truffle Butter — image right */}
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="bg-card rounded-lg p-8 border border-border order-2 md:order-1">
-              <h3 className="font-heading text-2xl font-semibold text-primary mb-3">
-                {products[1].name}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed mb-4">{products[1].description}</p>
-              <a
-                href={buildProductWhatsappLink(products[1].name)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-md font-medium hover:opacity-90 transition-opacity"
-              >
-                <MessageCircle size={18} />
-                Order on WhatsApp
-              </a>
-            </div>
-            <div className="overflow-hidden rounded-lg order-1 md:order-2">
-              <img
-                src={productButter}
-                alt="Fresh truffle butter"
-                width={800}
-                height={800}
-                className="w-full h-64 md:h-80 object-cover rounded-lg hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
+          <div className="grid gap-6">
+            {products.map((product) => (
+              <div key={product.name} className="bg-card rounded-lg p-8 border border-border">
+                <h3 className="font-heading text-2xl font-semibold text-primary mb-3">{product.name}</h3>
+                <p className="text-muted-foreground leading-relaxed mb-4">{product.description}</p>
+                <a
+                  href={buildProductWhatsappLink(product.name)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-md font-medium hover:opacity-90 transition-opacity"
+                >
+                  <MessageCircle size={18} />
+                  Order on WhatsApp
+                </a>
+              </div>
+            ))}
           </div>
         </div>
       </SectionWrapper>
